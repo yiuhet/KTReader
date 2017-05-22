@@ -24,7 +24,6 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(getLayoutRes(), null);
         //ButterKnife.bind(this,root);
-        init();
         return root;
     }
 
@@ -40,8 +39,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     protected void setTitle(String title) {
         getActivity().getActionBar().setTitle(title);
     }
-    protected void init() {
-    };
+
     protected void showProgress(String msg) {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getContext());

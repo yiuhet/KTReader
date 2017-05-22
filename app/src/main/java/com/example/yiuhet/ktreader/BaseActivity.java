@@ -22,7 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        //android 5.0 以上设置直接状态栏透明
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
@@ -35,6 +36,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         mProgressDialog.setMessage(msg);
         mProgressDialog.show();
+    }
+
+    protected void hideProgress() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
     }
 
     protected void startActivity(Class activity) {

@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
  */
 
 public abstract class BasePresenter<T> {
-    //
+
     protected Reference<T> mViewRef; //View 接口类型的弱引用
 
     public void attachView(T view) {

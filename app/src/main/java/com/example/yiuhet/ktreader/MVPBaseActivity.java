@@ -19,10 +19,6 @@ public abstract class MVPBaseActivity<V, T extends BasePresenter<V>> extends Bas
         super.onCreate(savedInstanceState);
         mPresenter = createPresenter();
         mPresenter.attachView((V) this);
-        init();
-    }
-
-    protected void init() {
     }
 
 

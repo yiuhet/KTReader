@@ -6,6 +6,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.os.Handler;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -33,12 +35,18 @@ public class SplashActivity extends MVPBaseActivity<SplashView,SplashPresenterIm
         return R.layout.activity_splash;
     }
 
+
     @Override
-    protected void init() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         mIvShowPic = (ImageView) findViewById(R.id.iv_show_pic);
         mTvShowSaying = (TextView) findViewById(R.id.tx_show_saying);
         mPresenter.loadSaying();
         startAnim(MainActivity.class);
+    }
+
+    protected void init() {
+
         //mTvShowSaying.setText(ShowApiUtils.getApiRequest(ShowApiUtils.BING_PIC));
 //        String url = "http://www.bing.com/az/hprichbg/rb/SpermophilusArmatus_ZH-CN11634149121_1920x1080.jpg";
 //        Glide.with(this).load(url).into(mIvShowPic);
