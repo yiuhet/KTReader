@@ -14,6 +14,8 @@ import android.widget.Toast;
 public abstract class MVPBaseActivity<V, T extends BasePresenter<V>> extends BaseActivity {
     protected T mPresenter;
 
+    protected abstract T createPresenter();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +29,4 @@ public abstract class MVPBaseActivity<V, T extends BasePresenter<V>> extends Bas
         super.onDestroy();
         mPresenter.detachView();
     }
-
-
-    protected abstract T createPresenter();
-
 }

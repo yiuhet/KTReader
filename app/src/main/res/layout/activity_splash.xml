@@ -7,14 +7,8 @@
         android:id="@+id/iv_show_pic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_splash_default"
+        android:background="@drawable/splash_layers"
         android:scaleType="fitXY"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/welcomimg_bg"/>
-
 
     <TextView
         android:layout_width="match_parent"
@@ -27,7 +21,7 @@
         android:textSize="23sp"/>
 
     <TextView
-        android:id="@+id/tx_show_saying"
+        android:id="@+id/tv_show_saying"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

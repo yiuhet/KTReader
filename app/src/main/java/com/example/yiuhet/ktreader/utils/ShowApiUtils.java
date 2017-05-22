@@ -44,13 +44,13 @@ public class ShowApiUtils {
             URL url = new URL(getApiRequest(httpUrl));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-
             connection.connect();
             InputStream is = connection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             String strRead = null;
             while ((strRead = reader.readLine()) != null) {
-                sbf.append(strRead); sbf.append("\r\n");
+                sbf.append(strRead);
+                sbf.append("\r\n");
             }
             reader.close();
         } catch (MalformedURLException e) {
@@ -59,7 +59,6 @@ public class ShowApiUtils {
             e.printStackTrace();
         }
         jsonResult =sbf.toString();
-        Log.d("ppapa",jsonResult + "esfewfwfwef");
         return jsonResult;
     }
 
@@ -78,6 +77,4 @@ public class ShowApiUtils {
         }
         return resultChinese;
     }
-
-
 }

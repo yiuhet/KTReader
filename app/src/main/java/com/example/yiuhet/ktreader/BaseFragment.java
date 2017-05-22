@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by yiuhet on 2017/5/18.
  */
@@ -23,7 +25,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(getLayoutRes(), null);
-        //ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
         return root;
     }
 
@@ -81,6 +83,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     public void onDestroy() {
         super.onDestroy();
         mPresenter.detachView();
+        mProgressDialog = null;
     }
 
     protected abstract T createPresenter();

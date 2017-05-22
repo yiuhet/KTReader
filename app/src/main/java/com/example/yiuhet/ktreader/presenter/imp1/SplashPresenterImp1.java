@@ -32,7 +32,6 @@ public class SplashPresenterImp1 extends BasePresenter<SplashView> implements Sp
         protected String doInBackground(String... params) {
             return ShowApiUtils.parseJsonFromSaying(ShowApiUtils.getData(params[0]));
         }
-
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -41,9 +40,6 @@ public class SplashPresenterImp1 extends BasePresenter<SplashView> implements Sp
             } else {
                 mSplashView.onGetSayingFailed();
             }
-
         }
-
     }
-
 }

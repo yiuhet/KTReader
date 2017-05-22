@@ -6,5 +6,4 @@ package com.example.yiuhet.ktreader.presenter;
 
 public interface SplashPresenter {
     void loadSaying();
-
 }
