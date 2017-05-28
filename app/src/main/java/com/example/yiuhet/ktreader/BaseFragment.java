@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.yiuhet.ktreader.utils.CommonUtils;
+
 import butterknife.ButterKnife;
 
 /**
@@ -58,7 +60,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     }
 
     protected void toast(String msg) {
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        CommonUtils.ShowTips(getContext(), msg);
     }
 
     protected void startActivity(Class activity) {

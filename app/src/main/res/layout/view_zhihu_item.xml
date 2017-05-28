@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/zhihu_iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_centerVertical="true"
+        android:id="@+id/zhihu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/zhihu_iv"
+        android:layout_marginLeft="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="18dp" />
+
+</RelativeLayout>
