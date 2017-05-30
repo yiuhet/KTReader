@@ -14,6 +14,7 @@ import com.example.yiuhet.ktreader.BaseActivity;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.ui.fragment.ZhiHuFragment;
 import com.example.yiuhet.ktreader.utils.CommonUtils;
+import com.jude.swipbackhelper.SwipeBackHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

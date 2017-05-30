@@ -1,5 +1,6 @@
 package com.example.yiuhet.ktreader.ui.fragment;
 
+import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.adapter.ZhihuAdapter;
 import com.example.yiuhet.ktreader.app.Constant;
 import com.example.yiuhet.ktreader.presenter.imp1.ZhihuPresenterImp1;
+import com.example.yiuhet.ktreader.ui.activity.ZhihuDetailActivity;
 import com.example.yiuhet.ktreader.view.ZhihuView;
 
 import butterknife.BindView;
@@ -121,7 +123,9 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
     private ZhihuAdapter.OnItemClickListener mOnItemClickListener = new ZhihuAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(int id) {
-            toast(Constant.ZHIHU_BASE_URL + String.valueOf(id));
+            Intent intent = new Intent(getContext(), ZhihuDetailActivity.class);
+            intent.putExtra("ZHIHUID",String.valueOf(id));
+            startActivity(intent);
         }
     };
 

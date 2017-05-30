@@ -13,6 +13,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SwipeBackTheme" parent="AppTheme.NoActionBar">
+        //背景透明，不设滑动关闭时背景就是黑的。
+        <item name="android:windowIsTranslucent">true</item>
+        //Activity右滑进出的动画，觉得这个不好看随便换成自己的
+        <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
+    </style>
+    <style name="MainTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>//就是关掉这个Activity的透明背景
+    </style>
+
     <style name="SplashTheme" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_layers</item>
     </style>
@@ -21,4 +31,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Theme.Swipe.Back" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
