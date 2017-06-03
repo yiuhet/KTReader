@@ -1,0 +1,39 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_book"
+    tools:context="com.example.yiuhet.ktreader.ui.fragment.douban.DoubanBookFragment">
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/searchView"
+        android:queryHint="查找图书"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.SearchView>
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="match_parent"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_height="20dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="80dp"
+        android:id="@+id/recycleview_douban"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/prograss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="?android:colorAccent"/>
+
+</FrameLayout>

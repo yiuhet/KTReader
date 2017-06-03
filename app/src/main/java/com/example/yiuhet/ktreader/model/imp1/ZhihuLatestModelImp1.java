@@ -1,12 +1,17 @@
 package com.example.yiuhet.ktreader.model.imp1;
 
 import com.example.yiuhet.ktreader.api.ZhihuApi;
+import com.example.yiuhet.ktreader.app.Constant;
 import com.example.yiuhet.ktreader.model.ZhihuLatestModel;
 import com.example.yiuhet.ktreader.model.entity.ZhihuLatest;
-import com.example.yiuhet.ktreader.presenter.OnZhihuLatestListener;
+import com.example.yiuhet.ktreader.presenter.listener.OnZhihuLatestListener;
 import com.example.yiuhet.ktreader.utils.RetrofitManager;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -28,10 +33,9 @@ public class ZhihuLatestModelImp1 implements ZhihuLatestModel {
 
     public ZhihuLatestModelImp1 () {
         mZhihuLatestList = new ArrayList<>();
-        mZhihuApiService = RetrofitManager
-                .getInstence()
-                .getRetrofit("http://news-at.zhihu.com/api/4/news/")
-                .create(ZhihuApi.class); //创建请求服务
+        mZhihuApiService = RetrofitManager.getInstence()
+                .getZhihuService(Constant.ZHIHU_BASE_URL); //创建请求服务
+
     }
 
     public List<ZhihuLatest.StoriesEntity> getmZhihuLatestList(){
@@ -71,7 +75,15 @@ public class ZhihuLatestModelImp1 implements ZhihuLatestModel {
 
     @Override
     public void loadMore(final OnZhihuLatestListener listener) {
-        date = String.valueOf(Integer.parseInt(date) - 1);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Calendar calendar = new GregorianCalendar();;//获取日历实例
+        try {
+            calendar.setTime(sdf.parse(date));
+            calendar.add(Calendar.HOUR_OF_DAY, -1);  //设置为前一天
+            date = sdf.format(calendar.getTime());//获得前一天
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         //数据层的操作，网络请求数据
         if (mZhihuApiService != null) {
             mZhihuApiService.getBefore(date)

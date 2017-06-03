@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lv_intheaters"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:text="正在热映"/>
+        <TextView
+            android:id="@+id/tv_more_intheaters"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:drawableRight="@drawable/ic_more"
+            android:drawableTint="@color/colorPrimary"
+            android:text="更多"/>
+    </RelativeLayout>
+    <HorizontalScrollView
+        android:id="@+id/sv_movie"
+        android:scrollbars="none"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:id="@+id/sv_add"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"></LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

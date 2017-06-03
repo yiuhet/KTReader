@@ -1,4 +1,4 @@
-package com.example.yiuhet.ktreader.view;
+package com.example.yiuhet.ktreader.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

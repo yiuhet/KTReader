@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_douban_book"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_toRightOf="@id/iv_douban_book"
+        android:id="@+id/book_title"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_below="@id/book_title"
+        android:layout_toRightOf="@id/iv_douban_book"
+        android:id="@+id/book_author"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_below="@id/book_author"
+        android:layout_toRightOf="@id/iv_douban_book"
+        android:id="@+id/book_time"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_below="@id/book_time"
+        android:layout_toRightOf="@id/iv_douban_book"
+        android:id="@+id/book_sorce"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:textSize="14sp" />
+
+</RelativeLayout>

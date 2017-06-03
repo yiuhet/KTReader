@@ -1,7 +1,6 @@
 package com.example.yiuhet.ktreader.model;
 
-import com.example.yiuhet.ktreader.presenter.OnZhihuDetailListener;
-import com.example.yiuhet.ktreader.presenter.OnZhihuLatestListener;
+import com.example.yiuhet.ktreader.presenter.listener.OnZhihuLatestListener;
 
 /**
  * Created by yiuhet on 2017/5/28.

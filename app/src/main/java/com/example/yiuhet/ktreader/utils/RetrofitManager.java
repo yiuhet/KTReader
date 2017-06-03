@@ -1,5 +1,6 @@
 package com.example.yiuhet.ktreader.utils;
 
+import com.example.yiuhet.ktreader.api.DoubanApi;
 import com.example.yiuhet.ktreader.api.ZhihuApi;
 import com.example.yiuhet.ktreader.app.MyApplication;
 
@@ -93,18 +94,31 @@ public class RetrofitManager {
         return retrofitManager;
     }
 
-    private Retrofit retrofit;
+    private ZhihuApi zhihuApi;
+    private DoubanApi doubanApi;
 
-    public Retrofit getRetrofit(String url) {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
+    public ZhihuApi getZhihuService(String url) {
+        if (zhihuApi == null) {
+            zhihuApi = new Retrofit.Builder()
                     .baseUrl(url) //必须以‘/’结尾
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用RxJava2作为CallAdapter
                     .client(client)//如果没有添加,那么retrofit2会自动给我们添加了一个。
                     .addConverterFactory(GsonConverterFactory.create())//Retrofit2可以帮我们自动解析返回数据，
-                    .build();
+                    .build().create(ZhihuApi.class);
         }
-        return retrofit;
+        return zhihuApi;
+    }
+
+    public DoubanApi getDoubanService(String url) {
+        if (doubanApi == null) {
+            doubanApi = new Retrofit.Builder()
+                    .baseUrl(url) //必须以‘/’结尾
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用RxJava2作为CallAdapter
+                    .client(client)//如果没有添加,那么retrofit2会自动给我们添加了一个。
+                    .addConverterFactory(GsonConverterFactory.create())//Retrofit2可以帮我们自动解析返回数据，
+                    .build().create(DoubanApi.class);
+        }
+        return doubanApi;
     }
 
 }

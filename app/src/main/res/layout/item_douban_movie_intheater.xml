@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="220dp"
+    android:layout_height="200dp">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/iv_movie"
+                            android:layout_width="120dp"
+                            android:layout_height="150dp" />
+                        <TextView
+                            android:id="@+id/tv_movie_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:background="@color/title_mask"
+                            android:text="null"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                </FrameLayout>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/tv_directors"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:theme="@style/DoubanMovieTextView"
+                    android:text="null"
+                    />
+                <TextView
+                    android:id="@+id/tv_casts"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:theme="@style/DoubanMovieTextView"
+                    android:text="null"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_Rating"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:theme="@style/DoubanMovieTextView"
+                    android:text="null"
+                    />
+        </LinearLayout>
+</FrameLayout>

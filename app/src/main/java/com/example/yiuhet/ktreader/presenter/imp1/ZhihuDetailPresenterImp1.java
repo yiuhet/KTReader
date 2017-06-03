@@ -1,12 +1,9 @@
 package com.example.yiuhet.ktreader.presenter.imp1;
 
-import android.util.Log;
-
 import com.example.yiuhet.ktreader.BasePresenter;
 import com.example.yiuhet.ktreader.model.entity.ZhihuDetail;
 import com.example.yiuhet.ktreader.model.imp1.ZhihuDetailModelImp1;
-import com.example.yiuhet.ktreader.presenter.OnZhihuDetailListener;
-import com.example.yiuhet.ktreader.presenter.OnZhihuLatestListener;
+import com.example.yiuhet.ktreader.presenter.listener.OnZhihuDetailListener;
 import com.example.yiuhet.ktreader.presenter.ZhihuDetailPresenter;
 import com.example.yiuhet.ktreader.view.ZhihuDetailView;
 

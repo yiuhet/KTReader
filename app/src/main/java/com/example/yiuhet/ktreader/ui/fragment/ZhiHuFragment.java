@@ -39,6 +39,8 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
 
     private ZhihuAdapter mZhihuAdapter;
 
+
+
     @Override
     public void onStartGetData() {
         mPrograss.setVisibility(View.VISIBLE);
@@ -46,20 +48,26 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
 
     @Override
     public void onGetZhihuLatestSuccess() {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
         mZhihuAdapter.notifyDataSetChanged();
     }
 
 
     @Override
     public void onGetMoreSuccess() {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
         mZhihuAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onGetDataFailed(String error) {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
         toast(error);
     }
 
@@ -86,6 +94,7 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
         unbinder = ButterKnife.bind(this, rootView);
         init();
         mPresenter.getLatest();
+
         return rootView;
     }
 

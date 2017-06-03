@@ -2,12 +2,11 @@ package com.example.yiuhet.ktreader.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -15,7 +14,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.yiuhet.ktreader.MVPBaseActivity;
@@ -129,7 +127,11 @@ public class ZhihuDetailActivity extends MVPBaseActivity<ZhihuDetailView, ZhihuD
         super.onPostCreate(savedInstanceState);
         SwipeBackHelper.onPostCreate(this);
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
+    }
     @Override
     protected void onDestroy() {
         if (mWvZhihu != null) {

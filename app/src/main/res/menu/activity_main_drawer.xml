@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/nav_group_fragment">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_zhihu"
+            android:icon="@drawable/ic_nav_zhihu"
+            android:title="@string/title_zhihu" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_douban"
+            android:icon="@drawable/ic_nav_douban"
+            android:title="@string/title_douban" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_qiwen"
+            android:icon="@drawable/ic_nav_qiwen"
+            android:title="@string/title_qiwen" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_tupian"
+            android:icon="@drawable/ic_nav_img"
+            android:title="@string/title_tupian" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="个性化">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_history"
+                android:icon="@drawable/ic_nav_history"
+                android:title="足迹" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_save"
+                android:icon="@drawable/ic_nav_love"
+                android:title="收藏" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_nav_setting"
+                android:title="设置" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_nav_about"
+                android:title="关于" />
         </menu>
     </item>
 

@@ -1,6 +1,6 @@
 package com.example.yiuhet.ktreader.model;
 
-import com.example.yiuhet.ktreader.presenter.OnSplashListener;
+import com.example.yiuhet.ktreader.presenter.listener.OnSplashListener;
 
 /**
  * Created by yiuhet on 2017/5/28.

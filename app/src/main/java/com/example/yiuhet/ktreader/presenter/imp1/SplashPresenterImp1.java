@@ -1,14 +1,9 @@
 package com.example.yiuhet.ktreader.presenter.imp1;
 
-import android.content.Context;
-import android.os.AsyncTask;
-
 import com.example.yiuhet.ktreader.BasePresenter;
 import com.example.yiuhet.ktreader.model.imp1.SplashModelImp1;
-import com.example.yiuhet.ktreader.model.imp1.ZhihuLatestModelImp1;
-import com.example.yiuhet.ktreader.presenter.OnSplashListener;
+import com.example.yiuhet.ktreader.presenter.listener.OnSplashListener;
 import com.example.yiuhet.ktreader.presenter.SplashPresenter;
-import com.example.yiuhet.ktreader.utils.ShowApiUtils;
 import com.example.yiuhet.ktreader.view.SplashView;
 
 /**

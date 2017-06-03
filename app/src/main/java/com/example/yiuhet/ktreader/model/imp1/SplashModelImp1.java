@@ -3,7 +3,7 @@ package com.example.yiuhet.ktreader.model.imp1;
 import android.os.AsyncTask;
 
 import com.example.yiuhet.ktreader.model.SplashModel;
-import com.example.yiuhet.ktreader.presenter.OnSplashListener;
+import com.example.yiuhet.ktreader.presenter.listener.OnSplashListener;
 import com.example.yiuhet.ktreader.utils.ShowApiUtils;
 
 /**

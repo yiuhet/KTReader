@@ -33,6 +33,11 @@
             android:parentActivityName=".ui.activity.MainActivity"
             android:name=".ui.activity.ZhihuDetailActivity"
             android:theme="@style/SwipeBackTheme"></activity>
+
+        <activity
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:name=".ui.activity.DoubanBookDetailActivity"
+            android:theme="@style/SwipeBackTheme"></activity>
     </application>
 
 </manifest>
