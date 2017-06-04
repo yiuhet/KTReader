@@ -6,6 +6,6 @@
         android:id="@+id/action_"
         android:orderInCategory="100"
         android:title="@string/action_share"
-        android:icon="@drawable/ic_nav_love"
+        android:icon="@drawable/ic_toolbar_share1"
         app:showAsAction="always" />
 </menu>

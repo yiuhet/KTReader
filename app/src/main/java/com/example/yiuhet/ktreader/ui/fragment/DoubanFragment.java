@@ -15,12 +15,9 @@ import android.view.ViewGroup;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.adapter.DoubanAdapter;
 import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanBookFragment;
-import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanLocalFragment;
 import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanMovieFragment;
 import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanMusicFragment;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,8 +38,6 @@ public class DoubanFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.d("ppapp","豆瓣  onCreate");
     }
 
     /**
@@ -67,6 +62,7 @@ public class DoubanFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.d("pppppa","onDestroyView");
         removeChildFragment();
         unbinder.unbind();
     }
@@ -77,8 +73,7 @@ public class DoubanFragment extends Fragment {
         for (int i =0;i<fragmentList.size(); i++){
             if (fragmentList.get(i) instanceof DoubanBookFragment
                     ||fragmentList.get(i) instanceof DoubanMovieFragment
-                    ||fragmentList.get(i) instanceof DoubanMusicFragment
-                    ||fragmentList.get(i) instanceof DoubanLocalFragment){
+                    ||fragmentList.get(i) instanceof DoubanMusicFragment){
                 fragmentManager.beginTransaction()
                         .remove(fragmentList.get(i))
                         .commit();

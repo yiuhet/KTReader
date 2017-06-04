@@ -2,9 +2,10 @@ package com.example.yiuhet.ktreader.model.imp1;
 
 import com.example.yiuhet.ktreader.api.DoubanApi;
 import com.example.yiuhet.ktreader.app.Constant;
-import com.example.yiuhet.ktreader.model.DoubanBookDetailModel;
-import com.example.yiuhet.ktreader.model.entity.DoubanBookDetail;
-import com.example.yiuhet.ktreader.presenter.listener.OnDoubanBookDetailListener;
+import com.example.yiuhet.ktreader.model.DoubanMusicModel;
+import com.example.yiuhet.ktreader.model.entity.DoubanBook;
+import com.example.yiuhet.ktreader.model.entity.DoubanMusic;
+import com.example.yiuhet.ktreader.presenter.listener.OnDoubanMusicListener;
 import com.example.yiuhet.ktreader.utils.RetrofitManager;
 
 import io.reactivex.Observer;
@@ -14,33 +15,33 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by yiuhet on 2017/6/2.
+ * Created by yiuhet on 2017/6/4.
  */
 
-public class DoubanBookDetailModelImp1 implements DoubanBookDetailModel {
+public class DoubanMusicModelImp1 implements DoubanMusicModel {
+
     private DoubanApi mDoubanApiService; //请求服务
 
-    public DoubanBookDetailModelImp1() {
+    public DoubanMusicModelImp1() {
         mDoubanApiService = RetrofitManager
                 .getInstence()
-                .getDoubanService(Constant.DOUBAN_BASE_URL);
+                .getDoubanService(Constant.DOUBAN_BASE_URL); //创建请求服务
     }
-
     @Override
-    public void loadSearch(String id, final OnDoubanBookDetailListener listener) {
+    public void loadSearch(String id, final OnDoubanMusicListener listener) {
         if (mDoubanApiService != null) {
-            mDoubanApiService.getSearchBookDetail(id, String.valueOf(0))
+            mDoubanApiService.getSearchMusicByTag(id,"20")
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<DoubanBookDetail>() {
+                    .subscribe(new Observer<DoubanMusic>() {
                         @Override
                         public void onSubscribe(@NonNull Disposable d) {
 
                         }
 
                         @Override
-                        public void onNext(@NonNull DoubanBookDetail doubanBookDetail) {
-                            listener.onLoadDOubanBookDetailSuccess(doubanBookDetail);
+                        public void onNext(@NonNull DoubanMusic doubanMusic) {
+                            listener.onLoadSearchSuccess(doubanMusic);
                         }
 
                         @Override

@@ -19,7 +19,7 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/MainTheme"></activity>
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -30,14 +30,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:parentActivityName=".ui.activity.MainActivity"
             android:name=".ui.activity.ZhihuDetailActivity"
-            android:theme="@style/SwipeBackTheme"></activity>
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:theme="@style/SwipeBackTheme" />
 
         <activity
-            android:parentActivityName=".ui.activity.MainActivity"
             android:name=".ui.activity.DoubanBookDetailActivity"
-            android:theme="@style/SwipeBackTheme"></activity>
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity android:name=".ui.activity.DoubanMovieSubjectActivity"
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:theme="@style/SwipeBackTheme"/>
+
     </application>
 
 </manifest>

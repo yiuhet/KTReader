@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -95,6 +95,7 @@ public class DoubanBookDetailActivity extends MVPBaseActivity<DoubanBookDetailVi
     private void initView() {
         mBookId = getIntent().getStringExtra("DOUBANBOOKID");
         mPresenter.getDetail(mBookId);
+
         mBookSummary.setMaxHeight(mBookSummary.getLineHeight() * maxDescripLine);
         //方法1
         mSummaryExpandableLayout.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +144,8 @@ public class DoubanBookDetailActivity extends MVPBaseActivity<DoubanBookDetailVi
 
     private void initToolbar() {
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -198,12 +199,11 @@ public class DoubanBookDetailActivity extends MVPBaseActivity<DoubanBookDetailVi
         mSummaryHint1.setText("作者简介");
         mMoreTextView.setText(doubanBookDetail.authorIntro);
         /*
-         *方法2 通过自定义View组合封装
-         * 使用xml来定义layout，直接定义一个继承LinearLayout的MoreTextView类
-         * 这个类里边添加TextView和ImageView。
+         *方法3 通过自定义View组合封装
+         * 使用xml来定义layout
          */
         MyTextView myTextView = new MyTextView(DoubanBookDetailActivity.this);
-        myTextView.setText("标签", doubanBookDetail.tags);
+        myTextView.setTextTags("标签", doubanBookDetail.tags);
         mContentLinear.addView(myTextView);
 
         mRatingbar.setRating(Float.parseFloat(doubanBookDetail.rating.average) / 2f);
@@ -218,6 +218,12 @@ public class DoubanBookDetailActivity extends MVPBaseActivity<DoubanBookDetailVi
     @Override
     protected DoubanBookDetailPresenterImp1 createPresenter() {
         return new DoubanBookDetailPresenterImp1(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
     }
 
     @Override

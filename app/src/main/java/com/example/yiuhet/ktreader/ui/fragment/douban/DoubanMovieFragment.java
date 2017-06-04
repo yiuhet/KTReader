@@ -1,6 +1,7 @@
 package com.example.yiuhet.ktreader.ui.fragment.douban;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,7 @@ import com.example.yiuhet.ktreader.BaseFragment;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.adapter.DoubanMovieAdapter;
 import com.example.yiuhet.ktreader.presenter.imp1.DoubanMoviePresenterImp1;
+import com.example.yiuhet.ktreader.ui.activity.DoubanMovieSubjectActivity;
 import com.example.yiuhet.ktreader.view.DoubanMovieView;
 
 import butterknife.BindView;
@@ -63,32 +65,43 @@ public class DoubanMovieFragment extends BaseFragment<DoubanMovieView, DoubanMov
 
     @Override
     public void onGetComingSoonSuccess() {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onGgetTop250Success() {
         mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
+        mDoubanMovieAdapter.setTopData(mPresenter.getTopData());
     }
 
     @Override
     public void onGetWeeklySuccess() {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onGetNewMoviesSuccess() {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onGetDataFailed(String error) {
-        mPrograss.setVisibility(View.GONE);
+        if (mPrograss != null) {
+            mPrograss.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         init();
@@ -97,6 +110,7 @@ public class DoubanMovieFragment extends BaseFragment<DoubanMovieView, DoubanMov
 
     private void init() {
         mPresenter.getInTheaters();
+        mPresenter.getTop250();
         mRecycleviewDouban.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycleviewDouban.setHasFixedSize(true);
         mRecycleviewDouban.setItemAnimator(new DefaultItemAnimator());
@@ -109,8 +123,9 @@ public class DoubanMovieFragment extends BaseFragment<DoubanMovieView, DoubanMov
     private DoubanMovieAdapter.OnItemClickListener mOnItemClickListener = new DoubanMovieAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(String id, int type) {
-            //TODO : 跳转到详情页
-            toast(id);
+           Intent intent = new Intent(getContext(), DoubanMovieSubjectActivity.class);
+            intent.putExtra("DOUBANMOVIEID",String.valueOf(id));
+            startActivity(intent);
         }
     };
 

@@ -86,7 +86,7 @@ public class MyTextView extends LinearLayout {
         });
     }
 
-    public void setText(String title,List<DoubanBookDetail.TagsEntity> tagsEntityList) {
+    public void setTextTags(String title, List<DoubanBookDetail.TagsEntity> tagsEntityList) {
         hint.setText(title);
         for (int i = 0;i < tagsEntityList.size();i++) {
             contentView.setText(contentView.getText() + " " + String.format("%s(%s)",tagsEntityList.get(i).name,tagsEntityList.get(i).count));
@@ -94,6 +94,18 @@ public class MyTextView extends LinearLayout {
 
         expandView.post(new Runnable() {
 
+            @Override
+            public void run() {
+                expandView.setVisibility(contentView.getLineCount() > maxLine ? View.VISIBLE : View.GONE);
+            }
+        });
+        contentView.setHeight(contentView.getLineHeight() * maxLine);
+    }
+
+    public void setText(String title, String content) {
+        hint.setText(title);
+        contentView.setText(content);
+        expandView.post(new Runnable() {
             @Override
             public void run() {
                 expandView.setVisibility(contentView.getLineCount() > maxLine ? View.VISIBLE : View.GONE);

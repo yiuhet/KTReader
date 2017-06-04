@@ -11,7 +11,7 @@ public interface OnDoubanMovieListener {
     void onLoadSearchSuccess();//电影搜索
     void onLoadInTheatersSuccess(DoubanMovieDetail doubanMovieDetail);//正在热映
     void onLoadComingSoonSuccess();//即将上映
-    void onLoadTop250Success();//Top250
+    void onLoadTop250Success(DoubanMovieDetail doubanMovieDetail);//Top250
     void onLoadWeeklySuccess();// 口碑榜
     void onLoadNewMoviesSuccess();//新片榜
 

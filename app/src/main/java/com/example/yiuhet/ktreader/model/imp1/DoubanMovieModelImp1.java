@@ -71,8 +71,33 @@ public class DoubanMovieModelImp1 implements DoubanMovieModel {
     }
 
     @Override
-    public void loadTop250(OnDoubanMovieListener listener) {
+    public void loadTop250(final OnDoubanMovieListener listener) {
+        if (mDoubanApiService != null) {
+            mDoubanApiService.getTop250(String.valueOf(0))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<DoubanMovieDetail>() {
+                        @Override
+                        public void onSubscribe(@NonNull Disposable d) {
 
+                        }
+
+                        @Override
+                        public void onNext(@NonNull DoubanMovieDetail doubanMovieDetail) {
+                            listener.onLoadTop250Success(doubanMovieDetail);
+                        }
+
+                        @Override
+                        public void onError(@NonNull Throwable e) {
+                            listener.onLoadDataError(e.toString());
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }
     }
 
     @Override

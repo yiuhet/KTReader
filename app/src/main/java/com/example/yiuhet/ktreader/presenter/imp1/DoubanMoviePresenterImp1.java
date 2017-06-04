@@ -18,6 +18,7 @@ public class DoubanMoviePresenterImp1 extends BasePresenter<DoubanMovieView> imp
     private DoubanMovieView mDoubanMovieView;
     private DoubanMovieModelImp1 mDoubanMovieModelImp1;
     private DoubanMovieDetail mDoubanMovieDetail;
+    private DoubanMovieDetail mDoubanMovieTopDetail;
 
     public DoubanMoviePresenterImp1(DoubanMovieView doubanMovieView) {
         mDoubanMovieView = doubanMovieView;
@@ -31,6 +32,13 @@ public class DoubanMoviePresenterImp1 extends BasePresenter<DoubanMovieView> imp
         }
         return mDoubanMovieDetail;
     }
+
+    public DoubanMovieDetail getTopData() {
+        if (mDoubanMovieTopDetail == null) {
+            mDoubanMovieTopDetail = new DoubanMovieDetail();
+        }
+        return mDoubanMovieTopDetail;
+    }
     @Override
     public void getSearch() {
 
@@ -39,7 +47,6 @@ public class DoubanMoviePresenterImp1 extends BasePresenter<DoubanMovieView> imp
     @Override
     public void getInTheaters() {
         mDoubanMovieModelImp1.loadInTheaters(this);
-        Log.d("ppadpp","getInTheaters\n");
     }
 
     @Override
@@ -49,7 +56,7 @@ public class DoubanMoviePresenterImp1 extends BasePresenter<DoubanMovieView> imp
 
     @Override
     public void getTop250() {
-
+        mDoubanMovieModelImp1.loadTop250(this);
     }
 
     @Override
@@ -71,7 +78,6 @@ public class DoubanMoviePresenterImp1 extends BasePresenter<DoubanMovieView> imp
     public void onLoadInTheatersSuccess(DoubanMovieDetail doubanMovieDetail) {
         mDoubanMovieDetail = doubanMovieDetail;
         Log.d("testTime", "数据下载完成 返回到p层接口 时间： " + String.valueOf(System.currentTimeMillis()));
-
         mDoubanMovieView.onGetInTheatersSuccess();
     }
 
@@ -81,9 +87,11 @@ public class DoubanMoviePresenterImp1 extends BasePresenter<DoubanMovieView> imp
     }
 
     @Override
-    public void onLoadTop250Success() {
-
+    public void onLoadTop250Success(DoubanMovieDetail doubanMovieDetail) {
+        mDoubanMovieTopDetail = doubanMovieDetail;
+        mDoubanMovieView.onGgetTop250Success();
     }
+
 
     @Override
     public void onLoadWeeklySuccess() {

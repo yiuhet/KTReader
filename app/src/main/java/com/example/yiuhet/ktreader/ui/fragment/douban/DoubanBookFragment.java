@@ -46,42 +46,11 @@ public class DoubanBookFragment extends BaseFragment<DoubanBookView, DoubanBookP
 
     private DoubanBookAdapter mDoubanBookAdapter;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d("ppapp","豆瓣图书  onCreate");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d("ppapp","豆瓣图书  onDestroy");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("ppapp","豆瓣图书  onResume");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d("ppapp","豆瓣图书  onStop");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d("ppapp","豆瓣图书  onPause");
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        Log.d("ppapp","豆瓣图书  onCreateView");
         unbinder = ButterKnife.bind(this, rootView);
         init();
         return rootView;
@@ -96,7 +65,6 @@ public class DoubanBookFragment extends BaseFragment<DoubanBookView, DoubanBookP
         mRecycleviewDouban.setItemAnimator(new DefaultItemAnimator());
         mDoubanBookAdapter = new DoubanBookAdapter(getContext());
         mDoubanBookAdapter.setOnItemClickListener(mOnItemClickListener);
-        //mDoubanMovieAdapter.setOnItemClickListener(mOnItemClickListener);
         mRecycleviewDouban.setAdapter(mDoubanBookAdapter);
     }
 
@@ -150,12 +118,8 @@ public class DoubanBookFragment extends BaseFragment<DoubanBookView, DoubanBookP
 
     @Override
     public void onDestroyView() {
-        Log.d("ppapp","豆瓣图书  onDestroyView");
         super.onDestroyView();
         unbinder.unbind();
     }
 
-    public void a(){
-
-    }
 }
