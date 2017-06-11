@@ -72,7 +72,6 @@ public class DoubanMovieFragment extends BaseFragment<DoubanMovieView, DoubanMov
 
     @Override
     public void onGgetTop250Success() {
-        mPrograss.setVisibility(View.GONE);
         if (mPrograss != null) {
             mPrograss.setVisibility(View.GONE);
         }

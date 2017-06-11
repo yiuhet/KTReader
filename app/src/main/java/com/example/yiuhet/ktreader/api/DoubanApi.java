@@ -49,8 +49,6 @@ public interface DoubanApi {
      */
     @GET("music/search")
     Observable<DoubanMusic> getSearchMusicByTag(@Query("tag")  String text, @Query("count") String count); //搜索音乐by关键字
-
     @GET("music/{id}")
     Observable<DoubanMusic> getSearchMusicById(@Path("text")  String id); //搜索音乐
-
 }

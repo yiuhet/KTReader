@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:paddingTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prograss"/>
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/button_collect"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_collect"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="收藏"/>
+
+        <TextView
+            android:id="@+id/button_detail"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:drawableTop="@drawable/ic_detail"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            android:text="详情"/>
+
+        <TextView
+            android:id="@+id/button_download"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_download"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="下载"/>
+    </LinearLayout>
+</LinearLayout>

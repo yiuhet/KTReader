@@ -33,14 +33,14 @@ public class DoubanBookAdapter extends RecyclerView.Adapter<DoubanBookAdapter.Do
     }
 
     @Override
-    public void onBindViewHolder(DoubanBookViewHolder holder, int position) {
+    public void onBindViewHolder(final DoubanBookViewHolder holder, int position) {
         final DoubanBook.BooksEntity doubanBookList = mDoubanBook.books.get(position);
         holder.doubanBookItem.bindView(doubanBookList);
         holder.doubanBookItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mItemClickListener != null) {
-                    mItemClickListener.onItemClick(doubanBookList.id);
+                    mItemClickListener.onItemClick(doubanBookList.id,holder.doubanBookItem);
                 }
             }
         });
@@ -61,7 +61,7 @@ public class DoubanBookAdapter extends RecyclerView.Adapter<DoubanBookAdapter.Do
     }
 
     public interface OnItemClickListener {
-        void onItemClick(String id);
+        void onItemClick(String id,View view);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

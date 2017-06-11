@@ -1,11 +1,11 @@
 package com.example.yiuhet.ktreader.factory;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
 import com.example.yiuhet.ktreader.BaseFragment;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.ui.fragment.DoubanFragment;
+import com.example.yiuhet.ktreader.ui.fragment.UnsplashFragmentList;
 import com.example.yiuhet.ktreader.ui.fragment.ZhiHuFragment;
 
 /**
@@ -53,20 +53,18 @@ public class FragmentFactory {
     private Fragment getDoubanFragment() {
         if (mDoubanFragment == null) {
             mDoubanFragment = new DoubanFragment();
-            Log.d("ppapp","new DoubanFragment()");
         }
-        Log.d("ppapp","getDoubanFragment");
         return mDoubanFragment;
     }
     private BaseFragment getQiwenFragment() {
         if (mQiwenFragment == null) {
-            mQiwenFragment = new ZhiHuFragment();
+            mQiwenFragment = new UnsplashFragmentList();
         }
         return mQiwenFragment;
     }
     private BaseFragment getTupianFragment() {
         if (mTupianFragment == null) {
-            mTupianFragment = new ZhiHuFragment();
+            mTupianFragment = new UnsplashFragmentList();
         }
         return mTupianFragment;
     }

@@ -1,6 +1,7 @@
 package com.example.yiuhet.ktreader.utils;
 
 import com.example.yiuhet.ktreader.api.DoubanApi;
+import com.example.yiuhet.ktreader.api.TupianApi;
 import com.example.yiuhet.ktreader.api.ZhihuApi;
 import com.example.yiuhet.ktreader.app.MyApplication;
 
@@ -75,6 +76,7 @@ public class RetrofitManager {
     private static File cacheFile = new File(MyApplication.getAppCacheDir(), "caheData_zhihu");
     //设置缓存大小
     private static int DEFAULT_DIR_CACHE = 10 * 1024 * 1024;
+
     private static Cache cache = new Cache(cacheFile, DEFAULT_DIR_CACHE);
 
     private static OkHttpClient client = new OkHttpClient.Builder()
@@ -96,6 +98,7 @@ public class RetrofitManager {
 
     private ZhihuApi zhihuApi;
     private DoubanApi doubanApi;
+    private TupianApi tupianApi;
 
     public ZhihuApi getZhihuService(String url) {
         if (zhihuApi == null) {
@@ -119,6 +122,18 @@ public class RetrofitManager {
                     .build().create(DoubanApi.class);
         }
         return doubanApi;
+    }
+
+    public TupianApi getTupianService(String url) {
+        if (tupianApi == null) {
+            tupianApi = new Retrofit.Builder()
+                    .baseUrl(url) //必须以‘/’结尾
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用RxJava2作为CallAdapter
+                    .client(client)//如果没有添加,那么retrofit2会自动给我们添加了一个。
+                    .addConverterFactory(GsonConverterFactory.create())//Retrofit2可以帮我们自动解析返回数据，
+                    .build().create(TupianApi.class);
+        }
+        return tupianApi;
     }
 
 }

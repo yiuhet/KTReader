@@ -26,11 +26,6 @@ public class DoubanBookModelImp1 implements DoubanBookModel {
     private DoubanApi mDoubanApiService; //请求服务
 
     public DoubanBookModelImp1() {
-//        mDoubanApiService = new Retrofit.Builder()
-//                .baseUrl(Constant.DOUBAN_BASE_URL) //必须以‘/’结尾
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用RxJava2作为CallAdapter
-//                .addConverterFactory(GsonConverterFactory.create())//Retrofit2可以帮我们自动解析返回数据，
-//                .build().create(DoubanApi.class);
         mDoubanApiService = RetrofitManager
                 .getInstence()
                 .getDoubanService(Constant.DOUBAN_BASE_URL); //创建请求服务

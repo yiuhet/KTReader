@@ -8,4 +8,12 @@
         <attr name="maxLine" format="integer" />
         <attr name="text" format="string" />
     </declare-styleable>
+
+
+    <string-array name="spingarr">
+        <item>latest</item>
+        <item>oldest</item>
+        <item>popular</item>
+    </string-array>
+
 </resources>

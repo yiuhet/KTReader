@@ -69,6 +69,7 @@ public class ZhihuDetailActivity extends MVPBaseActivity<ZhihuDetailView, ZhihuD
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Todo 收藏功能
                 Snackbar.make(view, "已添加进收藏夹（待做功能）", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }

@@ -62,7 +62,6 @@ public class DoubanFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.d("pppppa","onDestroyView");
         removeChildFragment();
         unbinder.unbind();
     }

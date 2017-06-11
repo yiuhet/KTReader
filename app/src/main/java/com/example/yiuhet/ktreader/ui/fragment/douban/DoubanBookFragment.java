@@ -22,6 +22,7 @@ import com.example.yiuhet.ktreader.adapter.DoubanBookAdapter;
 import com.example.yiuhet.ktreader.model.entity.DoubanBook;
 import com.example.yiuhet.ktreader.presenter.imp1.DoubanBookPresenterImp1;
 import com.example.yiuhet.ktreader.ui.activity.DoubanBookDetailActivity;
+import com.example.yiuhet.ktreader.utils.CircularAnimUtil;
 import com.example.yiuhet.ktreader.view.DoubanBookView;
 
 import butterknife.BindView;
@@ -70,10 +71,11 @@ public class DoubanBookFragment extends BaseFragment<DoubanBookView, DoubanBookP
 
     private DoubanBookAdapter.OnItemClickListener mOnItemClickListener = new DoubanBookAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(String id) {
+        public void onItemClick(String id,View view) {
             Intent intent = new Intent(getContext(), DoubanBookDetailActivity.class);
             intent.putExtra("DOUBANBOOKID",String.valueOf(id));
-            startActivity(intent);
+            CircularAnimUtil.startActivity(getActivity(), intent, view,
+                    R.color.colorPrimary);
         }
     };
     private SearchView.OnQueryTextListener searchViewListener = new SearchView.OnQueryTextListener() {

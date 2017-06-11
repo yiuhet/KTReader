@@ -26,7 +26,6 @@ public class DoubanMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private Context mContext;
     private static final int TYPE_InTheaters = 0;
     private static final int TYPE_Top250 = 1;
-    private static final int TYPE_THREE = 2;
     private DoubanMovieDetail mDoubanMovieDetail;
     private DoubanMovieDetail mDoubanMovieTopDetail;
 

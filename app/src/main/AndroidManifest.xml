@@ -42,7 +42,10 @@
         <activity android:name=".ui.activity.DoubanMovieSubjectActivity"
             android:parentActivityName=".ui.activity.MainActivity"
             android:theme="@style/SwipeBackTheme"/>
-
+        <activity android:name=".ui.activity.UnsplashPhotoActivity"
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:theme="@style/SwipeBackTheme"
+            />
     </application>
 
 </manifest>
