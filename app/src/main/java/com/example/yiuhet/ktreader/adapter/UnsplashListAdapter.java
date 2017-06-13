@@ -117,5 +117,4 @@ public class UnsplashListAdapter extends RecyclerView.Adapter<UnsplashListAdapte
         mItemClickListener = listener;
     }
 
-
 }

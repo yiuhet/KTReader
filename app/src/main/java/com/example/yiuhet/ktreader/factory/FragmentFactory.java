@@ -5,8 +5,9 @@ import android.support.v4.app.Fragment;
 import com.example.yiuhet.ktreader.BaseFragment;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.ui.fragment.DoubanFragment;
-import com.example.yiuhet.ktreader.ui.fragment.UnsplashFragmentList;
+import com.example.yiuhet.ktreader.ui.fragment.UnsplashListFragment;
 import com.example.yiuhet.ktreader.ui.fragment.ZhiHuFragment;
+import com.example.yiuhet.ktreader.ui.fragment.douban.QiwenFragment;
 
 /**
  * Created by yiuhet on 2017/5/31.
@@ -17,7 +18,7 @@ public class FragmentFactory {
 
     private BaseFragment mZHihuFragment;
     private Fragment mDoubanFragment;
-    private BaseFragment mQiwenFragment;
+    private Fragment mQiwenFragment;
     private BaseFragment mTupianFragment;
 
     public static FragmentFactory getInstance() {
@@ -56,15 +57,15 @@ public class FragmentFactory {
         }
         return mDoubanFragment;
     }
-    private BaseFragment getQiwenFragment() {
+    private Fragment getQiwenFragment() {
         if (mQiwenFragment == null) {
-            mQiwenFragment = new UnsplashFragmentList();
+            mQiwenFragment = new QiwenFragment();
         }
         return mQiwenFragment;
     }
     private BaseFragment getTupianFragment() {
         if (mTupianFragment == null) {
-            mTupianFragment = new UnsplashFragmentList();
+            mTupianFragment = new UnsplashListFragment();
         }
         return mTupianFragment;
     }

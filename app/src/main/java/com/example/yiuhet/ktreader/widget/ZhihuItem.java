@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.model.entity.ZhihuLatest;
+import com.example.yiuhet.ktreader.utils.DBUtils;
+import com.example.yiuhet.ktreader.utils.MyDataBaseHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,8 +44,16 @@ public class ZhihuItem extends RelativeLayout {
         ButterKnife.bind(this, this);
     }
 
+    public void changeTextview() {
+        mZhihuTitle.setTextColor(getResources().getColor(R.color.gray));
+    }
+
     public void bindView(ZhihuLatest.StoriesEntity zhihuLatest) {
         mZhihuTitle.setText(zhihuLatest.title);
+        mZhihuTitle.setTextColor(getResources().getColor(R.color.black));
+        if(DBUtils.getInstence(mContext).isExist(MyDataBaseHelper.HISTORY, String.valueOf(zhihuLatest.id))) {
+            mZhihuTitle.setTextColor(getResources().getColor(R.color.gray));
+        }
         String url = zhihuLatest.images.get(0).toString();
         //Glide 获取图片
         Glide.with(mContext)

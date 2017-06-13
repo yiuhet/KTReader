@@ -29,4 +29,6 @@ public abstract class BasePresenter<T> {
             mViewRef = null;
         }
     }
+
+
 }

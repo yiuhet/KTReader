@@ -1,13 +1,16 @@
 package com.example.yiuhet.ktreader.ui.fragment;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +22,12 @@ import com.example.yiuhet.ktreader.adapter.ZhihuAdapter;
 import com.example.yiuhet.ktreader.app.Constant;
 import com.example.yiuhet.ktreader.presenter.imp1.ZhihuPresenterImp1;
 import com.example.yiuhet.ktreader.ui.activity.ZhihuDetailActivity;
+import com.example.yiuhet.ktreader.utils.DBUtils;
+import com.example.yiuhet.ktreader.utils.MyDataBaseHelper;
 import com.example.yiuhet.ktreader.view.ZhihuView;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,8 +47,6 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
 
     private ZhihuAdapter mZhihuAdapter;
 
-
-
     @Override
     public void onStartGetData() {
         mPrograss.setVisibility(View.VISIBLE);
@@ -53,7 +59,6 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
         }
         mZhihuAdapter.notifyDataSetChanged();
     }
-
 
     @Override
     public void onGetMoreSuccess() {
@@ -70,7 +75,6 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
         }
         toast(error);
     }
-
 
     @Override
     protected int getLayoutRes() {
@@ -131,12 +135,16 @@ public class ZhiHuFragment extends BaseFragment<ZhihuView, ZhihuPresenterImp1> i
 
     private ZhihuAdapter.OnItemClickListener mOnItemClickListener = new ZhihuAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(int id) {
+        public void onItemClick(String title, int id) {
+            DBUtils.getInstence(getContext()).insertData(MyDataBaseHelper.HISTORY, title, String.valueOf(id));
             Intent intent = new Intent(getContext(), ZhihuDetailActivity.class);
             intent.putExtra("ZHIHUID",String.valueOf(id));
+            intent.putExtra("ZHIHUTITLE",title);
             startActivity(intent);
         }
     };
+
+
 
     @Override
     public void onDestroyView() {

@@ -36,7 +36,7 @@ import butterknife.Unbinder;
  * Created by yiuhet on 2017/6/6.
  */
 
-public class UnsplashFragmentList extends BaseFragment<UnsplashPhotoListView, UnsplashPhotoListPresenterImp1> implements UnsplashPhotoListView, SwipeRefreshLayout.OnRefreshListener {
+public class UnsplashListFragment extends BaseFragment<UnsplashPhotoListView, UnsplashPhotoListPresenterImp1> implements UnsplashPhotoListView, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.content_recycle)
     RecyclerView contentRecycle;
@@ -156,7 +156,6 @@ public class UnsplashFragmentList extends BaseFragment<UnsplashPhotoListView, Un
             intent.putExtra("PHOTOID", id);
             CircularAnimUtil.startActivity(getActivity(), intent, view,
                     R.color.colorPrimary);
-            toast("you touch me,my id:" + id);
         }
     };
 

@@ -1,5 +1,6 @@
 package com.example.yiuhet.ktreader.ui.activity;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,9 +21,13 @@ import com.example.yiuhet.ktreader.MVPBaseActivity;
 import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.model.entity.ZhihuDetail;
 import com.example.yiuhet.ktreader.presenter.imp1.ZhihuDetailPresenterImp1;
+import com.example.yiuhet.ktreader.utils.DBUtils;
+import com.example.yiuhet.ktreader.utils.MyDataBaseHelper;
 import com.example.yiuhet.ktreader.utils.WebUtil;
 import com.example.yiuhet.ktreader.view.ZhihuDetailView;
 import com.jude.swipbackhelper.SwipeBackHelper;
+
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +47,8 @@ public class ZhihuDetailActivity extends MVPBaseActivity<ZhihuDetailView, ZhihuD
     @BindView(R.id.iv_title)
     ImageView mIvTitle;
     private String mZhihuId;
+    private String mZhihuTitle;
+    private Boolean isCollect;
 
     @Override
     protected ZhihuDetailPresenterImp1 createPresenter() {
@@ -65,13 +72,27 @@ public class ZhihuDetailActivity extends MVPBaseActivity<ZhihuDetailView, ZhihuD
 
     private void initView() {
         mZhihuId = getIntent().getStringExtra("ZHIHUID");
+        mZhihuTitle = getIntent().getStringExtra("ZHIHUTITLE");
         mPresenter.getDetail(mZhihuId);
+        isCollect = DBUtils.getInstence(this).isExist(MyDataBaseHelper.COLLECT,mZhihuId);
+        if (isCollect) {
+            mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+        }
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Todo 收藏功能
-                Snackbar.make(view, "已添加进收藏夹（待做功能）", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (isCollect) {
+                    DBUtils.getInstence(ZhihuDetailActivity.this).deleteDataCollect(MyDataBaseHelper.COLLECT, mZhihuId);
+                    mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                    Snackbar.make(view, "已取消收藏", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                } else {
+                    DBUtils.getInstence(ZhihuDetailActivity.this).insertData(MyDataBaseHelper.COLLECT,mZhihuTitle,mZhihuId);
+                    mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+                    Snackbar.make(view, "已加入收藏", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                isCollect = !isCollect;
             }
         });
         mWvZhihu.setVerticalScrollBarEnabled(true);

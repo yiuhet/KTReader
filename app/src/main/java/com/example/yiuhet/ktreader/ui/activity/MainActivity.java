@@ -2,13 +2,11 @@ package com.example.yiuhet.ktreader.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -48,6 +46,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void initView() {
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(R.string.title_zhihu);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,12 +118,16 @@ public class MainActivity extends BaseActivity
                 mToolbar.setTitle(R.string.title_tupian);
                 break;
             case R.id.nav_history :
+                startActivity(HistoryActivity.class, false);
                 break;
             case R.id.nav_save :
+                startActivity(CollectActivity.class, false);
                 break;
             case R.id.nav_setting :
+                startActivity(SettingsActivity.class, false);
                 break;
             case R.id.nav_about :
+                startActivity(AboutActivity.class, false);
                 break;
             default:
                 break;

@@ -32,14 +32,15 @@ public class ZhihuAdapter extends RecyclerView.Adapter<ZhihuAdapter.ZhihuViewHol
     }
 
     @Override
-    public void onBindViewHolder(ZhihuViewHolder holder, int position) {
+    public void onBindViewHolder(final ZhihuViewHolder holder, int position) {
         final ZhihuLatest.StoriesEntity zhihuLatest = mZhihuLatestList.get(position);
         holder.zhihuItem.bindView(zhihuLatest);
         holder.zhihuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mItemClickListener != null) {
-                    mItemClickListener.onItemClick(zhihuLatest.id);
+                    mItemClickListener.onItemClick(zhihuLatest.title, zhihuLatest.id);
+                    holder.zhihuItem.changeTextview();
                 }
             }
         });
@@ -61,7 +62,7 @@ public class ZhihuAdapter extends RecyclerView.Adapter<ZhihuAdapter.ZhihuViewHol
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int id);
+        void onItemClick(String title, int id);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

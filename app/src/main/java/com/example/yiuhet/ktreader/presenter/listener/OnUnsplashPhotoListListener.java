@@ -12,10 +12,8 @@ import java.util.List;
 
 public interface OnUnsplashPhotoListListener {
     void onLoadPhotoListSuccess(List<UnsplashPhotosList> photosList);
-//    void onLoadMoreSuccess(List<UnsplashPhotosList> photosList);
 
     void onLoadSearchPhotoListSuccess(UnsplashPhotoSearch photosList);
-    //void onLoadSearchMoreSuccess(List<UnsplashPhotosList> photosList);
 
     void onLoadDataError(String error);
 }

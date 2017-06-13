@@ -3,6 +3,7 @@ package com.example.yiuhet.ktreader.ui.activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,8 @@ import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.app.MyApplication;
 import com.example.yiuhet.ktreader.model.entity.UnsplashPhoto;
 import com.example.yiuhet.ktreader.presenter.imp1.UnsplashPhotoPresenterImp1;
+import com.example.yiuhet.ktreader.utils.DBUtils;
+import com.example.yiuhet.ktreader.utils.MyDataBaseHelper;
 import com.example.yiuhet.ktreader.view.UnsplashPhotoView;
 import com.jude.swipbackhelper.SwipeBackHelper;
 
@@ -56,6 +59,7 @@ public class UnsplashPhotoActivity extends MVPBaseActivity<UnsplashPhotoView, Un
     private String[] itemsSize = { "raw (大小正在计算中)","full (大小正在计算中)","regularl (大小正在计算中)","small (大小正在计算中)" };
     private String[] items = { "raw","full","regular","small" };
     ArrayAdapter<String> adapter;
+    private Boolean isCollect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,11 @@ public class UnsplashPhotoActivity extends MVPBaseActivity<UnsplashPhotoView, Un
     private void init() {
         PhotoUrl = getIntent().getStringExtra("PHOTOID");
         mPresenter.getPhoto(PhotoUrl);
+        isCollect = DBUtils.getInstence(this).isExist(MyDataBaseHelper.UNSPLASH,PhotoUrl);
+        if (isCollect) {
+            mCollect.setTextColor(getResources().getColor(R.color.colorAccent));
+            mCollect.setCompoundDrawablesRelativeWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_collect_true), null, null);
+        }
     }
 
     @Override
@@ -126,9 +135,22 @@ public class UnsplashPhotoActivity extends MVPBaseActivity<UnsplashPhotoView, Un
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.button_collect:
-                //Todo 收藏功能
-                Snackbar.make(view, "添加进收藏夹（待做功能）", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (isCollect) {
+                    DBUtils.getInstence(UnsplashPhotoActivity.this).deleteDataCollect(MyDataBaseHelper.UNSPLASH,PhotoUrl);
+                    mCollect.setTextColor(getResources().getColor(R.color.white));
+                    mCollect.setCompoundDrawablesWithIntrinsicBounds(null,getResources().getDrawable(R.drawable.ic_collect),null,null);
+//                    Snackbar.make(view, "已取消收藏", Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
+                    toast("已取消收藏");
+                } else {
+                    DBUtils.getInstence(UnsplashPhotoActivity.this).insertData(MyDataBaseHelper.UNSPLASH,PhotoUrl,mUnsplashPhoto.urls.regular);
+                    mCollect.setTextColor(getResources().getColor(R.color.colorAccent));
+                    mCollect.setCompoundDrawablesRelativeWithIntrinsicBounds(null,getResources().getDrawable(R.drawable.ic_collect_true),null,null);
+//                    Snackbar.make(view, "已加入收藏", Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
+                    toast("已加入收藏");
+                }
+                isCollect = !isCollect;
                 break;
             case R.id.button_detail:
                 if (mUnsplashPhoto != null) {
