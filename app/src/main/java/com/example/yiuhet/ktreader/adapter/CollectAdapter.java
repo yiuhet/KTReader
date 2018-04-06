@@ -123,6 +123,7 @@ public class CollectAdapter extends BaseExpandableListAdapter{
         private TextView tv_title;
         private TextView tv_time;
     }
+
     private static class ViewHolderUnsplash{
         private ImageView iv_image;
         private TextView tv_time;

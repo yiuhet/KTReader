@@ -10,4 +10,5 @@ public interface HistoryCollectModel {
     void loadHistory(OnHistoryCollectListener listener);
     void loadCollect(OnHistoryCollectListener listener);
     void loadUnsplash(OnHistoryCollectListener listener);
+    void clearHistory();
 }

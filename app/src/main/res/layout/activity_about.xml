@@ -1,13 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.yiuhet.ktreader.ui.activity.AboutActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="AboutActivity"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorPrimary"
+        android:text="希望能够结识你"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="KTReader，即为Kill Time Reader,这是一款无聊时打开消磨时间的阅读软件，算是我做的第一个有着完整结构的app,开发周期近一个月，开发期间有过因为修复bug上网搜索解决方案无果而焦头烂额，也有过因为完成一个功能而沾沾自喜。\n总之，在今天完成了大致所有功能，尽管它并不完善，可它仍是我的努力一个月的成果，如果这段话有幸被屏幕前的你所看见，并且你也是个Android开发者且对我这个项目有着建议或不解，希望你可以联系我,如果能够帮助到你，不胜荣幸。" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:padding="20dp"
+        android:text="2017.6.14"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="关于我的一些信息"
+        android:textColor="@color/colorPrimary" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_github"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EEEEEE"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDarkGrey"
+            android:text="查看项目源码" />
+
+        <Button
+            android:id="@+id/button_jianshu"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EEEEEE"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDarkGrey"
+            android:text="查看个人博客"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button_share"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EEEEEE"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDarkGrey"
+            android:text="分享给小伙伴"/>
+
+        <Button
+            android:id="@+id/button_tucao"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EEEEEE"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDarkGrey"
+            android:text="建议错误反馈"/>
+    </LinearLayout>
+
+</LinearLayout>
+

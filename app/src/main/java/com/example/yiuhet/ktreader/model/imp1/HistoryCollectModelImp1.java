@@ -52,6 +52,7 @@ public class HistoryCollectModelImp1 implements HistoryCollectModel {
         }
     }
 
+    @Override
     public void clearHistory() {
         DBUtils.getInstence(MyApplication.getContext()).clearHistory();
     }

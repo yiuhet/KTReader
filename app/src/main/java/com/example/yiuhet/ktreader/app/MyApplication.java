@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 
+import com.example.yiuhet.ktreader.R;
+
 /**
  * Created by yiuhet on 2017/5/23.
  */

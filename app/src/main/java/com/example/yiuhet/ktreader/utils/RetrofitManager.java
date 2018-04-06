@@ -73,7 +73,7 @@ public class RetrofitManager {
         }
     };
     //缓存位置
-    private static File cacheFile = new File(MyApplication.getAppCacheDir(), "caheData_zhihu");
+    private static File cacheFile = new File(MyApplication.getAppCacheDir(), "/KTReaderCache");
     //设置缓存大小
     private static int DEFAULT_DIR_CACHE = 10 * 1024 * 1024;
 

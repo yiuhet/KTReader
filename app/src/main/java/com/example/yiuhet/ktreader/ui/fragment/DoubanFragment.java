@@ -17,6 +17,7 @@ import com.example.yiuhet.ktreader.adapter.DoubanAdapter;
 import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanBookFragment;
 import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanMovieFragment;
 import com.example.yiuhet.ktreader.ui.fragment.douban.DoubanMusicFragment;
+import com.example.yiuhet.ktreader.utils.SharedPreferenceUtil;
 
 import java.util.List;
 
@@ -55,8 +56,27 @@ public class DoubanFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
         doubanAdapter = new DoubanAdapter(getActivity().getSupportFragmentManager());
         mVpDouban.setAdapter(doubanAdapter);
+        initColor();
         mTablayDouban.setupWithViewPager(mVpDouban);
         return view;
+    }
+
+    private void initColor() {
+        String theme = SharedPreferenceUtil.getInstence().getSettingsTheme();
+        if (SharedPreferenceUtil.getInstence().getSettingsSafe()) {
+            mTablayDouban.setBackgroundColor(getResources().getColor(R.color.colorPrimaryGrey));
+        } else if (theme.equals("indigo")){
+            mTablayDouban.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }else if (theme.equals("pink")){
+            mTablayDouban.setBackgroundColor(getResources().getColor(R.color.colorPrimaryPink));
+        }else if (theme.equals("red")){
+            mTablayDouban.setBackgroundColor(getResources().getColor(R.color.colorPrimaryRed));
+        }else if (theme.equals("green")){
+            mTablayDouban.setBackgroundColor(getResources().getColor(R.color.colorPrimaryGreen));
+        }else if (theme.equals("purple")){
+            mTablayDouban.setBackgroundColor(getResources().getColor(R.color.colorPrimaryPurple));
+        }
+
     }
 
     @Override

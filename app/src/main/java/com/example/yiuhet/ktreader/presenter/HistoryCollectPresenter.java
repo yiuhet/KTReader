@@ -6,4 +6,5 @@ package com.example.yiuhet.ktreader.presenter;
 
 public interface HistoryCollectPresenter {
     void getData(String table);
+    void clearHistory();
 }

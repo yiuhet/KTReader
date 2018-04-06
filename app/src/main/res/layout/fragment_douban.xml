@@ -13,7 +13,6 @@
             android:id="@+id/tablay_douban"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@color/colorPrimary"
             app:tabIndicatorHeight="3dp"
             app:tabIndicatorColor="@color/white"
             app:tabTextColor="@color/title_mask"

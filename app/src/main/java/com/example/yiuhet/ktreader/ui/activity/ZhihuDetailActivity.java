@@ -1,5 +1,6 @@
 package com.example.yiuhet.ktreader.ui.activity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -19,6 +21,7 @@ import android.widget.ProgressBar;
 import com.bumptech.glide.Glide;
 import com.example.yiuhet.ktreader.MVPBaseActivity;
 import com.example.yiuhet.ktreader.R;
+import com.example.yiuhet.ktreader.app.Constant;
 import com.example.yiuhet.ktreader.model.entity.ZhihuDetail;
 import com.example.yiuhet.ktreader.presenter.imp1.ZhihuDetailPresenterImp1;
 import com.example.yiuhet.ktreader.utils.DBUtils;
@@ -154,6 +157,23 @@ public class ZhihuDetailActivity extends MVPBaseActivity<ZhihuDetailView, ZhihuD
         getMenuInflater().inflate(R.menu.menu_detail, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_share) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT,
+                    String.format("我看见一篇有趣的文章：%s,把链接分享给你：%s",mZhihuTitle,Constant.ZHIHU_BASE_URL + mZhihuId));
+            startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_zhihu) + mZhihuTitle));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
     @Override
     protected void onDestroy() {
         if (mWvZhihu != null) {

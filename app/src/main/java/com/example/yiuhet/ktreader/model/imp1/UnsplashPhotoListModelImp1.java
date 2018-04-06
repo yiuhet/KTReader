@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.util.Log;
 
 import com.example.yiuhet.ktreader.api.TupianApi;
+import com.example.yiuhet.ktreader.app.Constant;
 import com.example.yiuhet.ktreader.model.UnsplashPhotoListModel;
 import com.example.yiuhet.ktreader.model.entity.UnsplashPhoto;
 import com.example.yiuhet.ktreader.model.entity.UnsplashPhotoSearch;
@@ -27,8 +28,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UnsplashPhotoListModelImp1 implements UnsplashPhotoListModel{
 
-    private static final String UNSPLASH_APPLICATION_ID = "c38ecf4661326d08903149c16235862997f1afc00ed5e294a550f4305e59dcdf";
-    private static final String UNSPLASH_BASE_URL = "https://api.unsplash.com/";
     private int PAGE = 1;
     private int PAGE_SEARCH = 1;
     private int PER_PAGE = 10;
@@ -40,7 +39,7 @@ public class UnsplashPhotoListModelImp1 implements UnsplashPhotoListModel{
     public UnsplashPhotoListModelImp1() {
         mTupianApi = RetrofitManager
                 .getInstence()
-                .getTupianService(UNSPLASH_BASE_URL);
+                .getTupianService(Constant.UNSPLASH_BASE_URL);
     }
 
     public void setState(int state) {
@@ -50,7 +49,7 @@ public class UnsplashPhotoListModelImp1 implements UnsplashPhotoListModel{
     @Override
     public void loadSearchPhotoList(final OnUnsplashPhotoListListener listener, String query) {
         if (mTupianApi != null) {
-            mTupianApi.getSearchUnsplashPhotosList(UNSPLASH_APPLICATION_ID, query, PAGE_SEARCH, PER_PAGE)
+            mTupianApi.getSearchUnsplashPhotosList(Constant.UNSPLASH_APPLICATION_ID, query, PAGE_SEARCH, PER_PAGE)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<UnsplashPhotoSearch>() {
@@ -82,7 +81,7 @@ public class UnsplashPhotoListModelImp1 implements UnsplashPhotoListModel{
     @Override
     public void loadPhotoList(final OnUnsplashPhotoListListener listener) {
         if (mTupianApi != null) {
-            mTupianApi.getUnsplashPhotosList(UNSPLASH_APPLICATION_ID, PAGE, PER_PAGE, ORDERBY[STATE])
+            mTupianApi.getUnsplashPhotosList(Constant.UNSPLASH_APPLICATION_ID, PAGE, PER_PAGE, ORDERBY[STATE])
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<List<UnsplashPhotosList>>() {

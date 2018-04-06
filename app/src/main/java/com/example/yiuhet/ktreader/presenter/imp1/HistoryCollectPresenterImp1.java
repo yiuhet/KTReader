@@ -40,8 +40,10 @@ public class HistoryCollectPresenterImp1 extends BasePresenter<HistoryCollectVie
         }
 
     }
-
-
+    @Override
+    public void clearHistory() {
+        mHistoryCollectModelImp1.clearHistory();
+    }
     @Override
     public void onHistorySuccess(List<HistoryCollect> historyList) {
         mHistoryCollectView.onGetHistorySuccess(historyList);
@@ -62,7 +64,4 @@ public class HistoryCollectPresenterImp1 extends BasePresenter<HistoryCollectVie
         mHistoryCollectView.onGetDataFailed(error);
     }
 
-    public void clearHistory() {
-        mHistoryCollectModelImp1.clearHistory();
-    }
 }

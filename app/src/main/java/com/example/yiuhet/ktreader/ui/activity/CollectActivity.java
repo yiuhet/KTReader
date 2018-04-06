@@ -34,7 +34,6 @@ public class CollectActivity extends MVPBaseActivity<HistoryCollectView, History
     @BindView(R.id.content_listview)
     ExpandableListView mContentListview;
 
-    List<HistoryCollect> mCollectList = new ArrayList<>();
     private ArrayList<String> gData = null;
     private ArrayList<ArrayList<HistoryCollect>> iData = null;
     private ArrayList<HistoryCollect> lData = null;
