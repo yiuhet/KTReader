@@ -33,18 +33,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void initTheme() {
         String theme = SharedPreferenceUtil.getInstence().getSettingsTheme();
+        //夜间模式 todo night mode
         if (SharedPreferenceUtil.getInstence().getSettingsSafe()) {
             setTheme(R.style.AppThemeGrey);
-        } else if (theme.equals("indigo")){
-            setTheme(R.style.AppTheme);
-        }else if (theme.equals("pink")){
-            setTheme(R.style.AppThemePink);
-        }else if (theme.equals("red")){
-            setTheme(R.style.AppThemeRed);
-        }else if (theme.equals("green")){
-            setTheme(R.style.AppThemeGreen);
-        }else if (theme.equals("purple")){
-            setTheme(R.style.AppThemePurple);
+        } else {
+            switch (theme) {
+                case "indigo":
+                    setTheme(R.style.AppTheme);
+                case "pink":
+                    setTheme(R.style.AppThemePink);
+                case "red":
+                    setTheme(R.style.AppThemeRed);
+                case "green":
+                    setTheme(R.style.AppThemeGreen);
+                case "purple":
+                    setTheme(R.style.AppThemePurple);
+            }
         }
     }
 

@@ -20,6 +20,7 @@ import com.example.yiuhet.ktreader.R;
 import com.example.yiuhet.ktreader.factory.FragmentFactory;
 import com.example.yiuhet.ktreader.ui.fragment.ZhiHuFragment;
 import com.example.yiuhet.ktreader.utils.CommonUtils;
+import com.example.yiuhet.ktreader.utils.LogUtil;
 import com.example.yiuhet.ktreader.utils.SharedPreferenceUtil;
 
 import butterknife.BindView;
@@ -51,8 +52,8 @@ public class MainActivity extends BaseActivity
 
     private void initView() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
-        Log.d("testsafa", prefs.getString("settings_theme","indigo"));
-        Log.d("testsafa", String.valueOf(SharedPreferenceUtil.getInstence().getSettingsSafe()));
+        LogUtil.d("yiuhet",prefs.getString("settings_theme","indigo"));
+        LogUtil.d("yiuhet", String.valueOf(SharedPreferenceUtil.getInstence().getSettingsSafe()));
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(R.string.title_zhihu);

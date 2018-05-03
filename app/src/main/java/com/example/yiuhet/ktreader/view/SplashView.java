@@ -8,8 +8,7 @@ import android.widget.ImageView;
  */
 
 public interface SplashView {
+    void onSuccess(String string);
 
-    void onGetSayingSuccess(String string);
-
-    void onGetSayingFailed();
+    void onError();
 }

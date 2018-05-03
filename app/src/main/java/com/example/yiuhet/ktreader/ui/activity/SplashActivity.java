@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,12 +39,12 @@ public class SplashActivity extends MVPBaseActivity<SplashView, SplashPresenterI
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         //保持全屏窗口
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        mPresenter.loadSaying();
-        startAnim(MainActivity.class);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        mPresenter.loadData();
+        startAnim();
     }
 
-    private void startAnim(final Class act) {
+    private void startAnim() {
         //传入一个ImageView对象,围绕X,Y进行2D缩放,由原始的大小方法到原来的1.15倍
         ObjectAnimator animatorX = ObjectAnimator.ofFloat(mIvShowPic, "scaleX", 1f, 1.15f);
         ObjectAnimator animatorY = ObjectAnimator.ofFloat(mIvShowPic, "scaleY", 1f, 1.15f);
@@ -57,18 +56,18 @@ public class SplashActivity extends MVPBaseActivity<SplashView, SplashPresenterI
         set.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                startActivity(act);
+                startActivity(MainActivity.class);
             }
         });
     }
 
     @Override
-    public void onGetSayingSuccess(String string) {
+    public void onSuccess(String string) {
         mTvShowSaying.setText(string);
     }
 
     @Override
-    public void onGetSayingFailed() {
+    public void onError() {
         mTvShowSaying.setText(getString(R.string.default_saying));
     }
 }

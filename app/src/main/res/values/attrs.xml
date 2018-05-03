@@ -9,6 +9,10 @@
         <attr name="text" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="SimpleImageView">
+        <attr name="src" format="integer" />
+    </declare-styleable>
+
 
     <string-array name="spingarr">
         <item>latest</item>

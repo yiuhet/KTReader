@@ -1,6 +1,6 @@
 package com.example.yiuhet.ktreader.model;
 
-import com.example.yiuhet.ktreader.presenter.listener.OnSplashListener;
+import com.example.yiuhet.ktreader.presenter.listener.NetCallback;
 
 /**
  * Created by yiuhet on 2017/5/28.
@@ -8,5 +8,6 @@ import com.example.yiuhet.ktreader.presenter.listener.OnSplashListener;
  */
 
 public interface SplashModel {
-    void loadSaying(OnSplashListener listener);
+
+    void loadData(NetCallback listener);
 }

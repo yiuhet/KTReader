@@ -2,7 +2,7 @@ package com.example.yiuhet.ktreader.presenter.imp1;
 
 import com.example.yiuhet.ktreader.BasePresenter;
 import com.example.yiuhet.ktreader.model.imp1.SplashModelImp1;
-import com.example.yiuhet.ktreader.presenter.listener.OnSplashListener;
+import com.example.yiuhet.ktreader.presenter.listener.NetCallback;
 import com.example.yiuhet.ktreader.presenter.SplashPresenter;
 import com.example.yiuhet.ktreader.view.SplashView;
 
@@ -11,29 +11,29 @@ import com.example.yiuhet.ktreader.view.SplashView;
  * 启动界面Prestener实现
  */
 
-public class SplashPresenterImp1 extends BasePresenter<SplashView> implements SplashPresenter,OnSplashListener{
+public class SplashPresenterImp1 extends BasePresenter<SplashView> implements SplashPresenter, NetCallback {
     /*Presenter作为中间层，持有View和Model的引用*/
     private SplashView mSplashView;
-    private SplashModelImp1 splashModelImp1;
+    private SplashModelImp1 mSplashModelImpl;
 
     public SplashPresenterImp1(SplashView splashView) {
         mSplashView = splashView;
-        splashModelImp1 = new SplashModelImp1();
+        mSplashModelImpl = new SplashModelImp1();
     }
 
     @Override
-    public void loadSaying() {
-        splashModelImp1.loadSaying(this);
+    public void loadData() {
+        mSplashModelImpl.loadData(this);
     }
 
     @Override
     public void onSuccess(String saying) {
-        mSplashView.onGetSayingSuccess(saying);
+        mSplashView.onSuccess(saying);
     }
 
     @Override
     public void onError() {
-        mSplashView.onGetSayingFailed();
+        mSplashView.onError();
     }
 
 }
