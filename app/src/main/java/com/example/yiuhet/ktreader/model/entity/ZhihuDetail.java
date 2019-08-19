@@ -10,6 +10,18 @@ import java.util.List;
  */
 
 public class ZhihuDetail {
+    @Override
+    public String toString() {
+        return "ZhihuDetail{" +
+                "body='" + body + '\'' +
+                ", imageSource='" + imageSource + '\'' +
+                ", title='" + title + '\'' +
+                ", image='" + image + '\'' +
+                ", shareUrl='" + shareUrl + '\'' +
+                ", id=" + id +
+                ", css=" + css +
+                '}';
+    }
 
     @SerializedName("body")
     public String body;

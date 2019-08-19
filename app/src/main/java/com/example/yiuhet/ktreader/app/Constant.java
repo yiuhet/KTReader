@@ -14,4 +14,6 @@ public class Constant {
 
     public static final String UNSPLASH_BASE_URL = "https://api.unsplash.com/";
 
+    public static final String LOGIN_BASE_URL = "http://140.82.3.105:8888/";
+
 }

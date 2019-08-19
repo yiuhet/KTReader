@@ -1,5 +1,6 @@
 package com.example.yiuhet.ktreader.ui.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -10,13 +11,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.yiuhet.ktreader.BaseActivity;
 import com.example.yiuhet.ktreader.R;
+import com.example.yiuhet.ktreader.app.MyApplication;
 import com.example.yiuhet.ktreader.factory.FragmentFactory;
 import com.example.yiuhet.ktreader.ui.fragment.ZhiHuFragment;
 import com.example.yiuhet.ktreader.utils.CommonUtils;
@@ -29,7 +33,7 @@ import butterknife.ButterKnife;
  * Created by yiuhet on 17/5/18.
  */
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -39,6 +43,9 @@ public class MainActivity extends BaseActivity
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+
+    TextView userId;
+    TextView userName;
 
     private long exitTime = 0;
 
@@ -50,7 +57,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void initView() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this) ;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Log.d("testsafa", prefs.getString("settings_theme","indigo"));
         Log.d("testsafa", String.valueOf(SharedPreferenceUtil.getInstence().getSettingsSafe()));
 
@@ -62,7 +69,27 @@ public class MainActivity extends BaseActivity
         toggle.syncState();
         mNavView.setNavigationItemSelectedListener(this);
         mNavView.setCheckedItem(R.id.nav_zhihu);
+        View headerLayout = mNavView.inflateHeaderView(R.layout.nav_header_main);
+        ImageView userHead = (ImageView) headerLayout.findViewById(R.id.imageView);
+        userId = (TextView) headerLayout.findViewById(R.id.userId);
+        userName = (TextView) headerLayout.findViewById(R.id.userName);
+        userHead.setOnClickListener(this);
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_main, new ZhiHuFragment()).commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("yiuhet", "登陆状态：" + MyApplication.isLogin);
+        if (MyApplication.isLogin) {
+            loadUserData();
+        }
+    }
+
+    // TODO: 2018/6/11 查询登陆信息
+    private void loadUserData() {
+        userId.setText(MyApplication.getUser().getId());
+        userName.setText(MyApplication.getUser().getName());
     }
 
     @Override
@@ -117,9 +144,9 @@ public class MainActivity extends BaseActivity
             case R.id.nav_douban :
                 mToolbar.setTitle(R.string.title_douban);
                 break;
-            case R.id.nav_qiwen :
-                mToolbar.setTitle(R.string.title_qiwen);
-                break;
+//            case R.id.nav_qiwen :
+//                mToolbar.setTitle(R.string.title_qiwen);
+//                break;
             case R.id.nav_tupian :
                 mToolbar.setTitle(R.string.title_tupian);
                 break;
@@ -142,4 +169,15 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.imageView) {
+//            startActivity(LoginActivity.class, false);
+            if (!MyApplication.isLogin) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            } else {
+                CommonUtils.ShowTips(MainActivity.this, "已经登陆，进入个人主页!");
+            }
+        }
+    }
 }

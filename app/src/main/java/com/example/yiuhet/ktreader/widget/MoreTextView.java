@@ -43,7 +43,7 @@ public class MoreTextView extends LinearLayout {
         super(context, attrs);
         initalize(); //初始化并添加View
         initWithAttrs(context, attrs);//取值并设置
-        bindListener();//绑定点击事件
+        bindListener();//绑定点击事件·
 
     }
 

@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="KTReader，即为Kill Time Reader,这是一款无聊时打开消磨时间的阅读软件，算是我做的第一个有着完整结构的app,开发周期近一个月，开发期间有过因为修复bug上网搜索解决方案无果而焦头烂额，也有过因为完成一个功能而沾沾自喜。\n总之，在今天完成了大致所有功能，尽管它并不完善，可它仍是我的努力一个月的成果，如果这段话有幸被屏幕前的你所看见，并且你也是个Android开发者且对我这个项目有着建议或不解，希望你可以联系我,如果能够帮助到你，不胜荣幸。" />
+        android:text="KTReader，即为Keep Time Reader,这是一款节省时间的阅读软件。" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

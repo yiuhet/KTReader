@@ -1,5 +1,7 @@
 package com.example.yiuhet.ktreader.model.imp1;
 
+import android.util.Log;
+
 import com.example.yiuhet.ktreader.api.ZhihuApi;
 import com.example.yiuhet.ktreader.app.Constant;
 import com.example.yiuhet.ktreader.model.ZhihuDetailModel;
@@ -49,6 +51,7 @@ public class ZhihuDetailModelImp1 implements ZhihuDetailModel {
                         @Override
                         public void onNext(@NonNull ZhihuDetail zhihuDetail) {
                             mZhihuDetail = zhihuDetail;
+//                            Log.e("yiuhet", "--------------->" + zhihuDetail.toString());
                             listener.onLoadZhihuDetailSuccess(zhihuDetail);//加载成功时 回调接口方法。
                         }
 

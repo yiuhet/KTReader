@@ -38,8 +38,8 @@ public class FragmentFactory {
                 return getZHihuFragment();
             case R.id.nav_douban:
                 return getDoubanFragment();
-            case R.id.nav_qiwen:
-                return getQiwenFragment();
+//            case R.id.nav_qiwen:
+//                return getQiwenFragment();
             case R.id.nav_tupian:
                 return getTupianFragment();
         }

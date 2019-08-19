@@ -8,6 +8,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -133,11 +134,14 @@ public class ZhihuDetailActivity extends MVPBaseActivity<ZhihuDetailView, ZhihuD
         mToolbarLayout.setTitle(zhihuDetail.title);
         //在较为特殊的情况下，知乎日报可能将某个主题日报的站外文章推送至知乎日报首页。
         if (zhihuDetail.body == null) {
+            Log.e("yiuhet", "-----> " + zhihuDetail.shareUrl);
             mWvZhihu.loadUrl(zhihuDetail.shareUrl);
         } else {
             Glide.with(this).load(zhihuDetail.image).into(mIvTitle);
             String data = WebUtil.buildHtmlWithCss(zhihuDetail.body, zhihuDetail.css);
-            mWvZhihu.loadDataWithBaseURL(WebUtil.BASE_URL, data, WebUtil.MIME_TYPE, WebUtil.ENCODING, WebUtil.FAIL_URL);
+            Log.e("yiuhet", "data -----> " + data);
+            mWvZhihu.loadData(data, WebUtil.MIME_TYPE, WebUtil.ENCODING);
+//            mWvZhihu.loadDataWithBaseURL(WebUtil.BASE_URL, data, WebUtil.MIME_TYPE, WebUtil.ENCODING, WebUtil.FAIL_URL);
         }
     }
 
